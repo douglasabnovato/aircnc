@@ -27,7 +27,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] rodar a aplicação frontend: `yarn run start`
 
 #### Desenvolvendo o app mobile  
+- [ ] Tarefas 
+#### Funcionalidades avançadas 
+- [ ] Tarefas 
 
-#### Funcionalidades avançadas
-
-:. Por [!Diego Fernandes](https://rocketseat.com.br/week-9/aulas) - De Rocketseat na Semana Omnistack 9.0.
+:. Por [Diego Fernandes](https://rocketseat.com.br/week-9/aulas) - De Rocketseat na Semana Omnistack 9.0.
