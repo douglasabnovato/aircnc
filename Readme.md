@@ -26,9 +26,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] criar o projeto: `yarn create react-app frontend` 
 - [x] rodar a aplicação frontend: `yarn run start`
 
-#### 03/10 : Desenvolvendo o app mobile  
+#### Desenvolvendo o app mobile  
 
-#### 04/10 : Funcionalidades avançadas
+#### Funcionalidades avançadas
 
-:. De Rocketseat - Semana Omnistack 9.0.<br>
-Por Diego Fernandes : https://rocketseat.com.br/week-9/aulas
+:. Por [!Diego Fernandes](https://rocketseat.com.br/week-9/aulas) - De Rocketseat na Semana Omnistack 9.0.
