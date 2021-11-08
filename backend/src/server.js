@@ -9,12 +9,23 @@ mongoose.connect('mongodb+srv://dbAircnc:douglas1234@cluster0.yg58x.mongodb.net/
     useUnifiedTopology: true,
 })
 
-app.get("/", (request, response) => {
-    console.log("@douglasabnovato.")
-    return response.json({ message: "Hello Week Omnistack 9!" });
+app.get("/testar", (request, response) => {
+    console.log("testar - @douglasabnovato.")
+    return response.json({ idade:request.query.idade });
 })
 
+app.put("/testou/:id", (request, response) => {
+    console.log("testou id - @douglasabnovato.")
+    return response.json({ id:request.params.id });
+})
+   
 app.use(express.json());
+
+app.post("/teste", (request, response) => {
+    console.log("teste - @douglasabnovato.")
+    return response.json(request.body);
+})
+
 app.use(routes);
 
 app.listen(3333);  
