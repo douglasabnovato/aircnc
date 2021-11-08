@@ -17,10 +17,14 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] `yarn add express` ou `npm add express` - localhost:3333 : rotas
 - [x] `npm install nodemon -D` - reiniciar servidor node a cada alteração : error
 - [x] `yarn dev` - rodar aplicação com o nodemon - `npm run dev`: error
-- [x] insominia: get, post, put, delete : testar APIs
-- [x] banco de dados: mongoDB atlas cloud : conect your aplication
 - [x] mongoose : `yarn add mongoose` : editar o mongoDB 
 - [x] Partner - MVC : estrutura de pastas 
+- [x] Testar requisições Http: get, post, put, delete no insominia
+- [x] Parâmetros - req.query: acessar query params para filtros
+- [x] Parâmetros - req.params: acessar route params para edição e deleção
+- [x] Parâmetros - req.body: acessar o corpo da requisição para criação e edição  
+- [x] banco de dados: mongoDB atlas cloud 
+- [x] Multer: armazenar arquivos: `npm install multer`
 
 #### Construindo a interface web 
 - [x] criar o projeto: `yarn create react-app frontend` 
