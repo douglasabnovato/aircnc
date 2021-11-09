@@ -33,6 +33,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Estrutura App.js e Estilização App.css
 - [x] Primeira tela
 - [x] Chamadas API: axios ou fetch
+- [x] Fundamentos: componentização e estado
 
 #### Desenvolvendo o app mobile  
 - [ ] Tarefas 
