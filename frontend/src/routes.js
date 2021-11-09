@@ -10,9 +10,9 @@ export default function Rotas(){
     return(
         <Router>
             <Routes>
-                <Route path="/" component={Login} />
-                <Route path="/dashboard" component={Dashboard}/>
-                <Route path="/new" component={New}/>
+                <Route path="/" element={<Login/>} />
+                <Route path="/dashboard" element={<Dashboard/>}/>
+                <Route path="/new" element={<New/>}/>
             </Routes>   
         </Router>
     );
