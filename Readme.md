@@ -37,6 +37,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Configurar o cors no backend: `npm install cors`
 - [x] comunicação com a api
 - [x] salvando informações no localstorage
+- [x] instalar e configurar sistema de rotas: `npm install react-router-dom`
+
 
 #### Desenvolvendo o app mobile  
 - [ ] Tarefas 
