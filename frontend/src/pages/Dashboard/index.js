@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from "react";
-import api from "../../services/api"
+import api from "../../services/api";
+import "./styles.css";
 
 export default function Dashboard(){
 
@@ -26,7 +27,7 @@ export default function Dashboard(){
             <ul className="spot-list">
                 {spots.map(spot => (
                     <li key={spot._id}>
-                        <header/>
+                        <header style={{ backgroundImage: `url(${spot.thumbnail_url})`}}/>
                         <strong>{spot.company}</strong>
                         <span>{spot.price}</span> 
                     </li>
