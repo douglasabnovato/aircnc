@@ -34,6 +34,9 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Primeira tela
 - [x] Chamadas API: axios ou fetch
 - [x] Fundamentos: componentização e estado
+- [x] Configurar o cors no backend: `npm install cors`
+- [x] comunicação com a api
+- [x] salvando informações no localstorage
 
 #### Desenvolvendo o app mobile  
 - [ ] Tarefas 
