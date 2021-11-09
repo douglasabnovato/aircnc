@@ -4,6 +4,13 @@ import "./App.css";
 import logo from "./assets/logo.svg";
 
 function App() {
+
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log("hello");
+    alert("hello");
+  }
+
   return (
     <div className="container">
       <img src={logo} alt="AirCnc"/>
@@ -11,7 +18,7 @@ function App() {
         <p>
           Ofereça <strong>spots</strong> para programadores e encontre <strong>talentos</strong> para trabalhar.
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">E-MAIL*</label>
           <input id="email" type="email" placeholder="Seu melhor e-mail."/>
           <button className="btn" type="submit">Entrar</button>
