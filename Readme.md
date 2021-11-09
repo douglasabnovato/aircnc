@@ -30,8 +30,9 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] criar o projeto: `yarn create react-app frontend` 
 - [x] rodar a aplicação frontend: `yarn run start`
 - [x] iniciar projeto: `npm start`
-- [x] Estilização App.css
-
+- [x] Estrutura App.js e Estilização App.css
+- [x] Primeira tela
+- [x] Chamadas API: axios ou fetch
 
 #### Desenvolvendo o app mobile  
 - [ ] Tarefas 
