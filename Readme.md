@@ -38,7 +38,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] comunicação com a api
 - [x] salvando informações no localstorage
 - [x] instalar e configurar sistema de rotas: `npm install react-router-dom`
-
+- [x] instalar e configurar sistema de arquivo: useMemo
+- [x] mudado de history.push() para navigate()
 
 #### Desenvolvendo o app mobile  
 - [ ] Tarefas 
