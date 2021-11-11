@@ -8,6 +8,7 @@ function SpotList({ tech, navigation }) {
   const [spots, setSpots] = useState([]);
 
   useEffect(() => {
+
     async function loadSpots() {
       const response = await api.get('/spots', {
         params: { tech }
@@ -25,6 +26,7 @@ function SpotList({ tech, navigation }) {
 
   return (
     <View style={styles.container}>
+      
       <Text style={styles.title}>Empresas que usam <Text style={styles.bold}>{tech}</Text></Text>
 
       <FlatList
