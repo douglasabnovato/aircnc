@@ -10,6 +10,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Configuração de Ambiente
 - [x] Npm[6.14.6], Node[14.16.1], Yarn[1.22.10]
 - [x] VSCode, Drácula Oficial, Material Icon Theme, Rocketseat Reactjs, Fira Code
+- [x] Expo
 
 #### Criando a base da aplicação
 - [x] construir o back-end da sua aplicação
@@ -42,7 +43,10 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] mudado de history.push() para navigate()
 
 #### Desenvolvendo o app mobile  
-- [ ] Tarefas 
+- [x] Instalar expo: `npm install -g expo-cli` 
+- [x] Criar projeto com expo: `expo init mobile --template blank` 
+- [x] Warning: configuração com expo
+
 #### Funcionalidades avançadas 
 - [ ] Tarefas 
 
