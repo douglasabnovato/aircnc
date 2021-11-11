@@ -45,7 +45,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 #### Desenvolvendo o app mobile  
 - [x] Instalar expo: `npm install -g expo-cli` 
 - [x] Criar projeto com expo: `expo init mobile --template blank` 
-- [x] Warning: configuração com expo
+- [x] Navegação: `yarn add react-navigation`
 
 #### Funcionalidades avançadas 
 - [ ] Tarefas 
