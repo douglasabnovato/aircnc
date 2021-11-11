@@ -96,7 +96,11 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Criar projeto com expo: `expo init mobile --template blank` 
 - [x] Navegação: `yarn add react-navigation` 
 - [x] Animações Navegação: `expo install react-native-gesture-handler react-native-reanimated` 
+- [x] Estilização da page Login
 - [x] axios - conectar a aplicação com o api: `yarn add axios`
+- [x] services/api - baseURL: 'http://192.168.0.31:3333'. Esse ip pode mudar.
+- [x] configurar axios na função handleSubmit
+- [x] AsyncStorage agora é `@react-native-async-storage/async-storage`
 
 #### Funcionalidades avançadas 
 - [ ] Tarefas 

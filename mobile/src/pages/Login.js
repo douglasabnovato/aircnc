@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { View, AsyncStorage, KeyboardAvoidingView, Platform, Image, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, KeyboardAvoidingView, Platform, Image, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import api from '../services/api';
 
@@ -32,7 +33,7 @@ export default function Login({ navigation }) {
     await AsyncStorage.setItem('techs', techs);
 
     navigation.navigate('List');
-    
+
   }
 
   return (
