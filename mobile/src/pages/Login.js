@@ -6,18 +6,22 @@ import api from '../services/api';
 import logo from '../assets/logo.png';
 
 export default function Login({ navigation }) {
+
   const [email, setEmail] = useState('');
   const [techs, setTechs] = useState('');
 
   useEffect(() => {
+
     AsyncStorage.getItem('user').then(user => {
       if (user) {
         navigation.navigate('List');
       }
     })
+
   }, []);
 
   async function handleSubmit() {
+
     const response = await api.post('/sessions', {
       email
     })
@@ -28,6 +32,7 @@ export default function Login({ navigation }) {
     await AsyncStorage.setItem('techs', techs);
 
     navigation.navigate('List');
+    
   }
 
   return (
@@ -61,6 +66,7 @@ export default function Login({ navigation }) {
         <TouchableOpacity onPress={handleSubmit} style={styles.button}>
           <Text style={styles.buttonText}>Encontrar spots</Text>
         </TouchableOpacity>
+
       </View>
     </KeyboardAvoidingView>
   );

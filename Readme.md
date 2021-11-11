@@ -96,6 +96,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] Criar projeto com expo: `expo init mobile --template blank` 
 - [x] Navegação: `yarn add react-navigation` 
 - [x] Animações Navegação: `expo install react-native-gesture-handler react-native-reanimated` 
+- [x] axios - conectar a aplicação com o api: `yarn add axios`
 
 #### Funcionalidades avançadas 
 - [ ] Tarefas 
