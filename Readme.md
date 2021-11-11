@@ -43,10 +43,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] mudado de history.push() para navigate()
 
 #### Desenvolvendo o app mobile  
-- [x] Instalar expo: `npm install -g expo-cli` 
-- [x] Criar projeto com expo: `expo init mobile --template blank` 
-- [x] Navegação: `yarn add react-navigation`
-- [x] Refazer o módulo mobile com yarn
+- [ ] Tarefas
 
 #### Funcionalidades avançadas 
 - [ ] Tarefas 
