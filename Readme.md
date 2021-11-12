@@ -107,7 +107,9 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] socket.io no backend: `yarn add socket.io` 
 - [x] socket.io no frontend: `yarn add socket.io-client` 
 - [x] socket.io: comunicação ponta a ponta
-- [ ] socket.io: identificar qual é o usuário que está fazendo a conexão.
+- [x] socket.io: identificar qual é o usuário que está fazendo a conexão.
+- [x] notificação do real time de adição de spot.
+- [ ] estilização da notificação
 
 ## 🤔 Como contribuir
 
