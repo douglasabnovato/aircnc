@@ -103,7 +103,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] AsyncStorage agora é `@react-native-async-storage/async-storage`
 
 #### Funcionalidades avançadas 
-- [ ] Tarefas 
+- [x] Sincronizar realtime o front mobile e o front web com a lib socket.io.
 
 ## 🤔 Como contribuir
 
