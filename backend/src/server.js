@@ -10,16 +10,26 @@ const routes = require('./routes');
 const app = express();
 const server = http.Server(app);
 const io = socketio(server);
-
-io.on("connection", socket => {
-    console.log("usuário conectado", socket.id);
-    socket.emit("hello", "world");
-})
  
 mongoose.connect('mongodb+srv://dbAircnc:douglas1234@cluster0.yg58x.mongodb.net/dbAircnc?retryWrites=true&w=majority',{ 
     useNewUrlParser: true,
     useUnifiedTopology: true,
-})
+});
+
+const connectedUsers = {};
+
+io.on("connection", socket => {
+    const { user_id } = socket.handshake.query;
+    connectedUsers[user_id] = socket.id;
+});
+
+app.use((request, response, next) => {
+    request.io = io;
+    request.connectedUsers = connectedUsers;
+
+    return next();
+});
+
    
 app.use(cors());
 app.use(express.json()); 
