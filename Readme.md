@@ -104,7 +104,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 
 #### Funcionalidades avançadas 
 - [x] Sincronizar realtime o front mobile e o front web com a lib socket.io.
-- [x] socket.io: `yarn add socket.io` 
+- [x] socket.io no backend: `yarn add socket.io` 
+- [x] socket.io no frontend: `yarn add socket.io-client` 
 
 ## 🤔 Como contribuir
 

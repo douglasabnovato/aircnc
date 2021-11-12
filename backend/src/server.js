@@ -11,6 +11,11 @@ const app = express();
 const server = http.Server(app);
 const io = socketio(server);
 
+io.on("connection", socket => {
+    console.log("usuário conectado", socket.id);
+    socket.emit("hello", "world");
+})
+ 
 mongoose.connect('mongodb+srv://dbAircnc:douglas1234@cluster0.yg58x.mongodb.net/dbAircnc?retryWrites=true&w=majority',{ 
     useNewUrlParser: true,
     useUnifiedTopology: true,
