@@ -112,7 +112,8 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] estilização da notificação
 - [x] socket.io: configuração dentro do backend
 - [x] socket.io: configuração dentro do frontend
-- [ ] socket.io: configuração dentro do mobile
+- [x] socket.io: configuração dentro do mobile
+- #omnistacknextlevel
 
 ## 🤔 Como contribuir
 
