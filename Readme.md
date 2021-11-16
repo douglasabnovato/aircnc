@@ -110,6 +110,9 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 - [x] socket.io: identificar qual é o usuário que está fazendo a conexão.
 - [x] notificação do real time de adição de spot.
 - [x] estilização da notificação
+- [x] socket.io: configuração dentro do backend
+- [x] socket.io: configuração dentro do frontend
+- [ ] socket.io: configuração dentro do mobile
 
 ## 🤔 Como contribuir
 

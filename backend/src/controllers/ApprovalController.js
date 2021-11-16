@@ -11,6 +11,12 @@ module.exports = {
 
         await booking_id.save();
 
+        const bookingUserSocket = request.connectedUsers[booking.user];
+
+        if(bookingUserSocket){
+            request.io.to(bookingUserSocket).emit("booking_response", booking);
+        }
+
         return response.json(booking);
         
     }
