@@ -1,36 +1,6 @@
 <h1 align="center">
-    <img alt="Aircnc" title="#delicinha" src=".github/logo.png" width="250px" />
-</h1>
-
-<h4 align="center">
-  ☕ Code and coffee
-</h4>
-
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Rocketseat/semana-omnistack-9.svg">
-
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Rocketseat/semana-omnistack-9.svg">
-  
-  <a href="https://github.com/Rocketseat/semana-omnistack-9/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Rocketseat/semana-omnistack-9.svg">
-  </a>
-
-  <a href="https://github.com/Rocketseat/semana-omnistack-9/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/Rocketseat/semana-omnistack-9.svg">
-  </a>
-
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
-</p>
-
-<p align="center">
-  <a href="#rocket-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
-
-<br>
+    <img alt="Aircnc" title="#Aircnc" src=".github/logo.png" width="250px" />
+</h1> 
 
 <p align="center">
   <img alt="Frontend" src=".github/aircnc.png" width="100%">
@@ -52,6 +22,23 @@ O Aircnc é um projeto que visa conectar empresas que querem abrir spots e desen
 Compartilhar espaços de empresas para programadores externos conhecerem ou até mesmo, trabalharem. Promover esses espaços de forma gratuita ou alugada.
 
 Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem está interessado em usar esse espaço.
+
+## 🎨 Layout
+
+🎨 Aircnc - Web
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="Aircnc" title="#Aircnc-Home" src="./.github/aircnc-home.jpg" width="400px">
+  <img alt="Aircnc" title="#Aircnc-New" src="./.github/aircnc-new-spot.jpg" width="400px">
+  <img alt="Aircnc" title="#Aircnc-Dashboard" src="./.github/aircnc-dashboard.jpg" width="400px">
+</p> 
+
+🚀 Aircnc - Ambiente em desenvolvimento
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="Aircnc" title="#Aircnc-mongodb" src="./.github/aircnc-mongodb.jpg" width="400px">
+  <img alt="Aircnc" title="#Aircnc-ambiente" src="./.github/aircnc-ambiente.jpg" width="400px">
+</p> 
 
 #### Conhecendo a Omnistack 9.0
 - [x] Aplicação que será desenvolvida
