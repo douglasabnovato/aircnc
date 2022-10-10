@@ -6,6 +6,14 @@
   <img alt="Frontend" src=".github/aircnc.png" width="100%">
 </p>
 
+## 💻 Projeto
+
+O Aircnc é um projeto que visa conectar empresas que querem abrir spots e desenvolvedores que procuram um lugar para trocar ideias com devs, conhecer a empresa e trabalhar lá por um período. 
+
+Compartilhar espaços de empresas para programadores externos conhecerem ou até mesmo, trabalharem. Promover esses espaços de forma gratuita ou alugada.
+
+Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem está interessado em usar esse espaço.
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -14,14 +22,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [React](https://reactjs.org)
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
-
-## 💻 Projeto
-
-O Aircnc é um projeto que visa conectar empresas que querem abrir spots e desenvolvedores que procuram um lugar para trocar ideias com devs, conhecer a empresa e trabalhar lá por um período. 
-
-Compartilhar espaços de empresas para programadores externos conhecerem ou até mesmo, trabalharem. Promover esses espaços de forma gratuita ou alugada.
-
-Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem está interessado em usar esse espaço.
 
 ## 🎨 Layout
 
