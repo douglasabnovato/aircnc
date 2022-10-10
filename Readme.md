@@ -117,4 +117,6 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 --- 
 
-:. Feito com ♥ by Rocketseat :wave: [Diego Fernandes](https://rocketseat.com.br/week-9/aulas) - De Rocketseat na Semana Omnistack 9.0.
+:. Feito com ♥ by [Douglas A B Novato](https://www.linkedin.com/in/douglasabnovato/) :wave: 
+
+Fonte do Projeto: [Diego Fernandes - Rocketseat na Semana Omnistack 9.0](https://rocketseat.com.br/week-9/aulas)
