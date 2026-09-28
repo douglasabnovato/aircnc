@@ -1,3 +1,4 @@
 node_modules/
-.expo/   
-.expo-shared/  
+.expo/
+.expo-shared/
+.env

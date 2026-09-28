@@ -1,0 +1,40 @@
+# Blueprint do Render (plano gratuito): API Node e web estático, com as URLs cruzadas já fixadas
+services:
+  - type: web
+    name: aircnc-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://aircnc-web.onrender.com
+      - key: PUBLIC_URL
+        value: https://aircnc-api.onrender.com
+  - type: web
+    name: aircnc-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: build
+    autoDeployTrigger: commit
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_API_URL
+        value: https://aircnc-api.onrender.com

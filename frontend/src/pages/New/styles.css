@@ -1,23 +1,11 @@
-label#thumbnail {
-    margin-bottom: 20px;
-    border: 1px dashed #ddd;
-    background-size: cover;
-    cursor: pointer;
-    height: 160px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Cadastro: área de imagem clicável e acessível por teclado */
+.content form .file { position: absolute; width: 1px; height: 1px; opacity: 0; margin: 0; padding: 0; border: 0; }
+.content form label.thumbnail {
+  margin-bottom: 20px; border: 1px dashed #767676; background-size: cover; background-position: center;
+  cursor: pointer; height: 160px; display: flex; justify-content: center; align-items: center;
 }
-
-label#thumbnail input{
-    display: none;
-}
-
-label#thumbnail.has-thumbnail {
-    border: 0;
-}
-
-label#thumbnail.has-thumbnail img{
-    display: 0;
-}
+.content form .file:focus-visible + label.thumbnail { outline: 3px solid #1a73e8; outline-offset: 2px; }
+.content form label.thumbnail.has-thumbnail { border: 0; }
+.content form label.thumbnail.has-thumbnail img { display: none; }
+.content form .back { margin-top: 16px; text-align: center; color: #444; }
+/* Fim de New/styles.css */

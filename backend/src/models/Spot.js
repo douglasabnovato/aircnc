@@ -1,22 +1,14 @@
-const mongoose = require('mongoose');
+/* Spot: espaço oferecido por uma empresa; a URL pública da imagem é montada pela API */
+const mongoose = require("mongoose");
 
 const SpotSchema = new mongoose.Schema({
-    thumbnail: String,
-    company: String,
-    price: Number,
-    techs: [String],
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'User'
-    }
-},{
-    toJSON: {
-        virtuals: true,
-    }
-});
+  thumbnail: { type: String, required: true },
+  company: { type: String, required: true, trim: true },
+  price: { type: Number, default: 0, min: 0 },
+  techs: { type: [String], index: true },
+  techsLower: { type: [String], index: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true, index: true },
+}, { timestamps: true });
 
-SpotSchema.virtual("thumbnail_url").get(function(){
-    return `http://localhost:3333/files/${this.thumbnail}`
-})
-
-module.exports = mongoose.model('Spot', SpotSchema);
+module.exports = mongoose.model("Spot", SpotSchema);
+/* Fim de Spot.js */

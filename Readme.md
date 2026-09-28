@@ -14,6 +14,13 @@ Compartilhar espaços de empresas para programadores externos conhecerem ou até
 
 Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem está interessado em usar esse espaço.
 
+## 🌐 Em produção
+
+- Web: https://aircnc-web.onrender.com (site estático no Render)
+- API: https://aircnc-api.onrender.com/health (Render Free + MongoDB Atlas M0)
+- Passo a passo do deploy: [docs/DEPLOY.md](docs/DEPLOY.md). O app mobile não é publicado: roda no Expo Go apontando para a API.
+- Limites do plano gratuito: a API dorme após 15 min sem acesso (cerca de 1 min para acordar) e as imagens enviadas ficam em disco temporário.
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
@@ -101,6 +108,38 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [x] socket.io: configuração dentro do frontend
 - [x] socket.io: configuração dentro do mobile
 - #omnistacknextlevel
+
+#### Versão 2.0 (revisão de qualidade)
+- [x] Senha do banco removida do código; configuração por `.env`
+- [x] Sessão com token assinado; só o dono do spot aprova ou rejeita (antes qualquer pessoa, via GET)
+- [x] Reserva e aprovação voltaram a funcionar; pedidos pendentes aparecem mesmo após recarregar
+- [x] Upload só de imagens até 2 MB; tempo real autenticado (cada um recebe só os próprios avisos)
+- [x] Web em Vite 8 + React 18, acessível (WCAG AA); app em Expo SDK 57 + React Navigation 7
+- [x] 17 testes automatizados (API, tempo real e web)
+
+Detalhes em [docs/ANALISE.md](docs/ANALISE.md), [docs/ARQUITETURA.md](docs/ARQUITETURA.md) e [docs/PLANO-DE-ACAO.md](docs/PLANO-DE-ACAO.md).
+
+## 🚀 Como executar
+
+Requisitos: Node 20+, uma conta gratuita no MongoDB Atlas e o app Expo Go no celular.
+
+```bash
+# API (http://localhost:3333)
+cd backend && cp .env.example .env   # preencha MONGODB_URI e AUTH_SECRET
+npm install && npm run dev
+npm test
+
+# Web (http://localhost:5173)
+cd frontend && cp .env.example .env
+npm install && npm run dev
+npm test
+
+# App (Expo Go)
+cd mobile && cp .env.example .env    # EXPO_PUBLIC_API_URL = IP da sua máquina na rede
+npm install && npx expo start
+```
+
+Deploy gratuito: `render.yaml` cria a API e o web no Render; o banco fica no MongoDB Atlas M0. Passo a passo em [docs/DEPLOY.md](docs/DEPLOY.md).
 
 ## 🤔 Como contribuir
 
