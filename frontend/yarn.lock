@@ -774,7 +774,7 @@ vite@^8.3.5:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitest@^5.0.2:
+vitest@^5.0.5:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/vitest/-/vitest-5.0.5.tgz#266e335f4177541e3e60f876e0694f966a9601f2"
   dependencies:
