@@ -8,6 +8,15 @@
   <img alt="Frontend" src=".github/aircnc.png" width="100%">
 </p>
 
+## 🧠 O que aprendi
+
+> Proposta de 01/11/2026, escrita a partir do código e das dependências. Ajuste com a sua experiência.
+
+- Dividir um produto em API, web e app móvel que usam o mesmo contrato.
+- Enviar notificações em tempo real com Socket.IO.
+- Receber uploads com Multer e modelar dados com Mongoose.
+- Testar a API com `node --test` e o front com Vitest.
+
 ## 💻 Projeto
 
 O Aircnc é um projeto que visa conectar empresas que querem abrir spots e desenvolvedores que procuram um lugar para trocar ideias com devs, conhecer a empresa e trabalhar lá por um período. 
