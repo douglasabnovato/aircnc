@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 30/10/2026: 2 endereço(s) citado(s) abaixo não responde(m). Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h1 align="center">
     <img alt="Aircnc" title="#Aircnc" src=".github/logo.png" width="250px" />
@@ -16,10 +16,9 @@ Compartilhar espaços de empresas para programadores externos conhecerem ou até
 
 Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem está interessado em usar esse espaço.
 
-## 🌐 Em produção
+## 🌐 Publicação
 
-- Web: https://aircnc-web.onrender.com (site estático no Render)
-- API: https://aircnc-api.onrender.com/health (Render Free + MongoDB Atlas M0)
+- Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como executar").
 - Passo a passo do deploy: [docs/DEPLOY.md](docs/DEPLOY.md). O app mobile não é publicado: roda no Expo Go apontando para a API.
 - Limites do plano gratuito: a API dorme após 15 min sem acesso (cerca de 1 min para acordar) e as imagens enviadas ficam em disco temporário.
 
