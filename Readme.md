@@ -29,6 +29,9 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 
 - Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como executar").
 - Passo a passo do deploy: [docs/DEPLOY.md](docs/DEPLOY.md). O app mobile não é publicado: roda no Expo Go apontando para a API.
+
+App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Android.
+
 - Limites do plano gratuito: a API dorme após 15 min sem acesso (cerca de 1 min para acordar) e as imagens enviadas ficam em disco temporário.
 
 ## :rocket: Tecnologias
