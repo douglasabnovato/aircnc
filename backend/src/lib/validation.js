@@ -27,7 +27,7 @@ function parseTechs(input) {
 
 const session = z.object({
   email: z.string().trim().toLowerCase().email("Informe um e-mail válido.").max(120),
-  password: z.string({ required_error: "Informe a senha." }).min(8, "A senha precisa ter pelo menos 8 caracteres.").max(72, "A senha pode ter no máximo 72 caracteres."),
+  password: z.string({ error: "Informe a senha." }).min(8, "A senha precisa ter pelo menos 8 caracteres.").max(72, "A senha pode ter no máximo 72 caracteres."),
 });
 
 const spot = z.object({
