@@ -76,7 +76,7 @@ Recomendação para o lote (my-money-app, aircnc e instagram-feed): **um único 
 5. Remover os arquivos substituídos no ciclo MVP:
    ```bash
    git rm -r backend/src/controllers
-   git rm backend/src/routes.js backend/src/config/upload.js backend/yarn.lock frontend/yarn.lock mobile/yarn.lock
+   git rm backend/src/routes.js backend/src/config/upload.js backend/yarn.lock frontend/yarn.lock mobile/yarn.lock   # já feito em 06/11/2026
    git rm frontend/public/index.html frontend/src/index.js frontend/src/App.js frontend/src/routes.js frontend/src/services/api.js
    git rm frontend/src/pages/Dashboard/index.js frontend/src/pages/Login/index.js frontend/src/pages/New/index.js
    git rm mobile/src/routes.js mobile/src/services/api.js

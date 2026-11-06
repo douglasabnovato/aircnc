@@ -34,6 +34,29 @@ App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Andr
 
 - Limites do plano gratuito: a API dorme após 15 min sem acesso (cerca de 1 min para acordar) e as imagens enviadas ficam em disco temporário.
 
+## Estado e próximos passos (ciclo de 03/11/2026)
+
+Projeto de estudo (N1): 7 de 10 critérios aplicáveis atendidos. Ainda não finalizado.
+
+**O que foi feito**
+- Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
+- API sem alerta alto: `zod` 4 (#85).
+- App móvel incluído no CI (#74).
+- Neste ciclo: CI também nos PRs para `developer/**`, código antigo sem uso e `yarn.lock` removidos, testes de falha de rede (#95).
+
+**O que queremos fazer**
+- #88 Decidir a publicação no Render (responsável). O endereço `aircnc-web.onrender.com` respondeu 404 em 06/11/2026, por isso não há link aqui.
+- #89 Proteger a `master` com PR e CI obrigatórios (responsável).
+- #90 Resolver o Dependabot e o alerta alto do `zod` no app.
+- #91 Impedir reserva aprovada em dobro no mesmo spot e data.
+- #92 Percorrer cadastro de spot e reserva na tela.
+- #93 Desconectar o tempo real quando o token expirar.
+- #94 Histórico de reservas do dev no app.
+
+**Onde está a documentação**
+- Estado e critérios: [docs/MVP.md](docs/MVP.md)
+- Plano, pesquisa e backlog: [docs/PLANO-DE-ACAO.md](docs/PLANO-DE-ACAO.md) (seção "Ciclo de 03/11/2026")
+
 ## :rocket: Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
