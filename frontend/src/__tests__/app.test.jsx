@@ -79,4 +79,26 @@ describe("cadastro de spot", () => {
     expect(validateSpot({ thumbnail: img, company: "A", techs: "Go", price: "79,90" })).toBe("");
   });
 });
+describe("falha de rede", () => {
+  const offline = () => { globalThis.fetch = vi.fn(async () => { throw new TypeError("Failed to fetch"); }); };
+
+  it("login sem servidor mostra aviso de conexão", async () => {
+    offline();
+    renderAt("/");
+    await userEvent.type(screen.getByLabelText(/E-MAIL/), "rh@loggi.com");
+    await userEvent.type(screen.getByLabelText(/SENHA/), "senha-forte-123");
+    await userEvent.click(screen.getByRole("button", { name: "Entrar" }));
+    expect((await screen.findByRole("alert")).textContent).toMatch(/Não foi possível falar com o servidor/);
+    expect(screen.getByRole("button", { name: "Entrar" }).disabled).toBe(false);
+  });
+
+  it("painel sem servidor mostra o erro e não o estado vazio", async () => {
+    localStorage.setItem("aircnc.session", JSON.stringify({ token: "t", email: "rh@loggi.com" }));
+    offline();
+    renderAt("/dashboard");
+    expect((await screen.findByRole("alert")).textContent).toMatch(/Verifique sua conexão/);
+    expect(screen.queryByText(/ainda não cadastrou spots/)).toBeNull();
+    expect(localStorage.getItem("aircnc.session")).not.toBeNull();
+  });
+});
 /* Fim de app.test.jsx */
