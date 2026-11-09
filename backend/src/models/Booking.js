@@ -9,6 +9,8 @@ const BookingSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 BookingSchema.index({ user: 1, spot: 1, date: 1 }, { unique: true });
+/* No máximo uma reserva aprovada por spot e data, garantida pelo banco mesmo com dois cliques ao mesmo tempo */
+BookingSchema.index({ spot: 1, date: 1 }, { unique: true, partialFilterExpression: { approved: true } });
 
 module.exports = mongoose.model("Booking", BookingSchema);
 /* Fim de Booking.js */

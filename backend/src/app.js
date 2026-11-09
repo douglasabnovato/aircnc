@@ -126,7 +126,13 @@ function createApp({ repos, config, notify = () => undefined, today = v.todayBR 
     if (approved && (await repos.bookings.approvedExists(booking.spot._id, booking.date, booking._id))) {
       return res.status(409).json({ errors: ["Já existe uma reserva aprovada para este spot nesta data."] });
     }
-    const updated = await repos.bookings.setApproved(booking._id, approved);
+    let updated;
+    try {
+      updated = await repos.bookings.setApproved(booking._id, approved);
+    } catch (err) {
+      if (err.code === "DUPLICATE") return res.status(409).json({ errors: ["Já existe uma reserva aprovada para este spot nesta data."] });
+      throw err;
+    }
     notify(String(booking.user._id), "booking_response", publicBooking(updated));
     res.json(publicBooking(updated));
   };
