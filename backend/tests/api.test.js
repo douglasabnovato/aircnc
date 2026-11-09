@@ -154,6 +154,7 @@ describe("reservas", () => {
     const pend = await request(app).get("/bookings/pending").set("Authorization", `Bearer ${owner}`);
     assert.ok(pend.body.some((b) => b._id === r.body._id), "o pedido segue pendente");
     const outraData = await request(app).post(`/spots/${spotId}/bookings`).set("Authorization", `Bearer ${outro}`).send({ date: "11/10/2026" });
+    assert.equal(outraData.status, 201, JSON.stringify(outraData.body));
     const ok = await request(app).post(`/bookings/${outraData.body._id}/approvals`).set("Authorization", `Bearer ${owner}`);
     assert.equal(ok.status, 200);
     const nao = await request(app).post(`/bookings/${r.body._id}/rejections`).set("Authorization", `Bearer ${owner}`);

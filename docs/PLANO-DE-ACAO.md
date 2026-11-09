@@ -120,7 +120,7 @@ Timebox: 60 min.
 **Arquitetura.** Sem mudança de forma: API Express com repositório trocável (memória ou Mongo), Socket.IO com JWT, web em Vite e app em Expo 57. Novo: `backend/src/demo.js` sobe a API com o repositório em memória e imagens numa pasta temporária, sem MongoDB.
 
 **Riscos.**
-- O índice parcial novo não é criado se o banco já tiver duas reservas aprovadas no mesmo spot e data; nesse caso, o Mongoose registra o erro e a checagem da API continua valendo.
+- O índice parcial novo não é criado se o banco já tiver duas reservas aprovadas no mesmo spot e data; nesse caso, o modelo escreve o erro no log (evento `index`) e a checagem da API continua valendo. O caminho do Mongo não tem teste automático (os testes usam o repositório em memória): #100.
 - O teste de ponta a ponta faz o papel do app pelas chamadas da API; a tela do app segue sem teste em aparelho.
 - `playwright install --with-deps` no Ubuntu 26.04 pode ser lento; o job `e2e` tem limite de 25 minutos.
 
@@ -131,9 +131,9 @@ Timebox: 60 min.
 ### Plano de ação
 
 **Este ciclo executa.**
-1. `expo` 57.0.32 no app: o `@expo/cli` novo não usa `zod`, e o alerta alto sai sem o SDK 58 (#90). `vitest` 5.1 no web (alertas moderados do `@vitest/mocker`).
-2. Aprovação em dobro: checagem na API, índice parcial no Mongo e aviso no painel, com testes (#91).
+1. `expo` 57.0.32 no app: o `@expo/cli` novo não usa `zod`, e o alerta alto sai sem o SDK 58 (#90). `vitest` 5.1 no web, só no `package-lock.json` (a faixa `^5.0.2` já permitia), corrige os alertas moderados do `@vitest/mocker`.
+2. Aprovação em dobro: checagem na API e índice parcial no Mongo (#91). O painel já mostrava o erro da API e mantinha o pedido; um teste novo confirma isso para o 409.
 3. `npm run demo` e teste Playwright do fluxo principal, com job `e2e` no CI (#92).
 4. `docs/MVP.md` com uma tabela só e README com o estado do ciclo.
 
-**Vira issue.** Migração para o Expo SDK 58; o resto segue nas issues abertas (#88, #89, #93, #94).
+**Vira issue.** Migração para o Expo SDK 58 (#97), axe no teste de ponta a ponta (#98), teste do repositório do Mongo (#100); o resto segue nas issues abertas (#88, #89, #93, #94).

@@ -40,9 +40,9 @@ Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: si
 
 **O que foi feito**
 - Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
-- API sem alerta alto: `zod` 4 (#85). App sem alerta alto desde 09/11/2026: `expo` 57.0.32, que não traz mais o `zod` 3 (#90).
+- API sem alerta alto: `zod` 4 (#85). App sem alerta alto na sprint de 09/11/2026: `expo` 57.0.32, que não traz mais o `zod` 3. O alerta do Dependabot fecha quando a mudança chegar à `master`; a #90 segue para os alertas moderados.
 - Fluxo principal percorrido no navegador com Playwright: a empresa cadastra o spot, recebe o pedido em tempo real e aprova (#92). Roda no CI, no job `e2e`.
-- A API recusa aprovar duas reservas no mesmo spot e data, e o banco garante isso com um índice (#91).
+- A API recusa aprovar duas reservas no mesmo spot e data, e o MongoDB tem um índice para o caso de dois cliques ao mesmo tempo (#91; o índice ainda sem teste automático).
 - `npm run demo` sobe a API sem MongoDB, com dados em memória.
 
 **O que queremos fazer**
@@ -53,6 +53,7 @@ Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: si
 - #94 Histórico de reservas do dev no app.
 - #97 Migrar o app para o Expo SDK 58.
 - #98 Checar acessibilidade com axe no teste de ponta a ponta.
+- #100 Testar o repositório do MongoDB e o índice de aprovação única.
 
 **Onde está a documentação**
 - Estado e critérios: [docs/MVP.md](docs/MVP.md)
