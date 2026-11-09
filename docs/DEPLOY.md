@@ -39,8 +39,8 @@ Recomendação para o lote (my-money-app, aircnc e instagram-feed): **um único 
 |---|---|---|
 | `NODE_VERSION` `"22"` nos dois serviços | `render.yaml` | O Node 20 saiu de suporte em abril de 2026; o Vite 8 também pede Node recente no build |
 | `autoDeployTrigger: commit` nos dois serviços | `render.yaml` | Cada `git push` na `master` publica sozinho |
-| `CORS_ORIGINS` = `https://aircnc-web.onrender.com` e `PUBLIC_URL` = `https://aircnc-api.onrender.com` fixados | `render.yaml` | CORS da API e do Socket.IO já liberam o web publicado; as URLs das imagens saem com o endereço público |
-| `VITE_API_URL` = `https://aircnc-api.onrender.com` fixado | `render.yaml` | O web já nasce apontando para a API (HTTP e Socket.IO) |
+| `CORS_ORIGINS` = `https://aircnc-web.onrender.com` e `PUBLIC_URL` = `https://aircnc-api-45yf.onrender.com` fixados | `render.yaml` | CORS da API e do Socket.IO já liberam o web publicado; as URLs das imagens saem com o endereço público |
+| `VITE_API_URL` = `https://aircnc-api-45yf.onrender.com` fixado | `render.yaml` | O web já nasce apontando para a API (HTTP e Socket.IO) |
 | Rewrite `/*` → `/index.html` (já existia) | `render.yaml` | F5 em `/dashboard` e `/new` não dá 404 |
 | CI no Node 22 | `ci/github-actions-ci.yml` | Mesma versão do Render |
 | `babel-preset-expo` nos `devDependencies` do mobile | `mobile/package.json`, `mobile/package-lock.json` | O `babel.config.js` usa esse preset, mas ele só existia dentro de `node_modules/expo`; o `expo export` do CI falhava com `Cannot find module 'babel-preset-expo'` |
@@ -109,18 +109,18 @@ Recomendação para o lote (my-money-app, aircnc e instagram-feed): **um único 
 
 ### Etapa 4 · Conferir no ar
 
-1. `https://aircnc-api.onrender.com/health` responde `{"status":"ok"}`.
+1. `https://aircnc-api-45yf.onrender.com/health` responde `{"status":"ok"}`.
 2. `https://aircnc-web.onrender.com` abre o login. Entrar com um e-mail novo e senha de 8+ caracteres cria a conta.
 3. Cadastrar um spot com imagem: ele aparece no painel com a foto.
 4. F5 em `/dashboard`: continua no painel (rewrite funcionando).
-5. Tempo real, sem o celular: com o painel aberto, rode no Git Bash (troque `ID_DO_SPOT` pelo `_id` que aparece em `https://aircnc-api.onrender.com/spots?tech=SUA_TECNOLOGIA`):
+5. Tempo real, sem o celular: com o painel aberto, rode no Git Bash (troque `ID_DO_SPOT` pelo `_id` que aparece em `https://aircnc-api-45yf.onrender.com/spots?tech=SUA_TECNOLOGIA`):
    ```bash
-   TOKEN=$(curl -s -X POST https://aircnc-api.onrender.com/sessions -H "Content-Type: application/json" -d '{"email":"dev@teste.com","password":"Senha12345"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
-   curl -s -X POST https://aircnc-api.onrender.com/spots/ID_DO_SPOT/bookings -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"date":"31/12/2026"}'
+   TOKEN=$(curl -s -X POST https://aircnc-api-45yf.onrender.com/sessions -H "Content-Type: application/json" -d '{"email":"dev@teste.com","password":"Senha12345"}' | sed -E 's/.*"token":"([^"]+)".*/\1/')
+   curl -s -X POST https://aircnc-api-45yf.onrender.com/spots/ID_DO_SPOT/bookings -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"date":"31/12/2026"}'
    ```
    O pedido de reserva aparece no painel na hora; aprovar ou rejeitar funciona.
-6. No DevTools (aba Network), as chamadas e o WebSocket vão para `aircnc-api.onrender.com` sem erro de CORS.
-7. Mobile (opcional): `mobile/.env` com `EXPO_PUBLIC_API_URL=https://aircnc-api.onrender.com`, `npx expo start` e testar no Expo Go.
+6. No DevTools (aba Network), as chamadas e o WebSocket vão para `aircnc-api-45yf.onrender.com` sem erro de CORS.
+7. Mobile (opcional): `mobile/.env` com `EXPO_PUBLIC_API_URL=https://aircnc-api-45yf.onrender.com`, `npx expo start` e testar no Expo Go.
 
 ### Etapa 5 · Fechar
 
