@@ -34,28 +34,30 @@ App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Andr
 
 - Limites do plano gratuito: a API dorme após 15 min sem acesso (cerca de 1 min para acordar) e as imagens enviadas ficam em disco temporário.
 
-## Estado e próximos passos (ciclo de 03/11/2026)
+## Estado e próximos passos (ciclo de 07/11/2026)
 
-Projeto de estudo (N1): 7 de 10 critérios aplicáveis atendidos. Ainda não finalizado.
+Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: sim. O que falta (proteger a `master`, #89) depende do responsável.
 
 **O que foi feito**
 - Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
-- API sem alerta alto: `zod` 4 (#85).
-- App móvel incluído no CI (#74).
-- Neste ciclo: CI também nos PRs para `developer/**`, código antigo sem uso e `yarn.lock` removidos, testes de falha de rede (#95).
+- API sem alerta alto: `zod` 4 (#85). App sem alerta alto na sprint de 09/11/2026: `expo` 57.0.32, que não traz mais o `zod` 3. O alerta do Dependabot fecha quando a mudança chegar à `master`; a #90 segue para os alertas moderados.
+- Fluxo principal percorrido no navegador com Playwright: a empresa cadastra o spot, recebe o pedido em tempo real e aprova (#92). Roda no CI, no job `e2e`.
+- A API recusa aprovar duas reservas no mesmo spot e data, e o MongoDB tem um índice para o caso de dois cliques ao mesmo tempo (#91; o índice ainda sem teste automático).
+- `npm run demo` sobe a API sem MongoDB, com dados em memória.
 
 **O que queremos fazer**
-- #88 Decidir a publicação no Render (responsável). O endereço `aircnc-web.onrender.com` respondeu 404 em 06/11/2026, por isso não há link aqui.
+- #88 Decidir a publicação no Render (responsável). O endereço `aircnc-web.onrender.com` respondeu 404 em 09/11/2026, por isso não há link aqui.
 - #89 Proteger a `master` com PR e CI obrigatórios (responsável).
-- #90 Resolver o Dependabot e o alerta alto do `zod` no app.
-- #91 Impedir reserva aprovada em dobro no mesmo spot e data.
-- #92 Percorrer cadastro de spot e reserva na tela.
+- #90 Resolver os PRs do Dependabot e os alertas moderados do app.
 - #93 Desconectar o tempo real quando o token expirar.
 - #94 Histórico de reservas do dev no app.
+- #97 Migrar o app para o Expo SDK 58.
+- #98 Checar acessibilidade com axe no teste de ponta a ponta.
+- #100 Testar o repositório do MongoDB e o índice de aprovação única.
 
 **Onde está a documentação**
 - Estado e critérios: [docs/MVP.md](docs/MVP.md)
-- Plano, pesquisa e backlog: [docs/PLANO-DE-ACAO.md](docs/PLANO-DE-ACAO.md) (seção "Ciclo de 03/11/2026")
+- Plano, pesquisa e backlog: [docs/PLANO-DE-ACAO.md](docs/PLANO-DE-ACAO.md) (seção "Ciclo de 07/11/2026")
 
 ## :rocket: Tecnologias
 
@@ -165,10 +167,14 @@ cd backend && cp .env.example .env   # preencha MONGODB_URI e AUTH_SECRET
 npm install && npm run dev
 npm test
 
+# Sem MongoDB: API de demonstração em memória (os dados somem ao parar)
+cd backend && npm install && npm run demo
+
 # Web (http://localhost:5173)
 cd frontend && cp .env.example .env
 npm install && npm run dev
 npm test
+npx playwright install chromium && npm run test:e2e   # fluxo principal no navegador; sobe a API de demonstração sozinho
 
 # App (Expo Go)
 cd mobile && cp .env.example .env    # EXPO_PUBLIC_API_URL = IP da sua máquina na rede

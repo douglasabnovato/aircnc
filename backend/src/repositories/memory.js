@@ -51,6 +51,8 @@ function createMemoryRepos() {
       },
       async findById(bid) { return populated(bookings.get(bid)); },
       async setApproved(bid, approved) { bookings.get(bid).approved = approved; return populated(bookings.get(bid)); },
+      /* Já existe reserva aprovada neste spot e data (menos a própria)? */
+      async approvedExists(sid, date, exceptId) { return [...bookings.values()].some((b) => b.spot === sid && b.date === date && b.approved === true && b._id !== exceptId); },
       async pendingForSpots(ids) { return [...bookings.values()].filter((b) => ids.includes(b.spot) && b.approved === null).map(populated); },
     },
   };

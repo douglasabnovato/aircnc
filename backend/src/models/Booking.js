@@ -9,6 +9,12 @@ const BookingSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 BookingSchema.index({ user: 1, spot: 1, date: 1 }, { unique: true });
+/* No máximo uma reserva aprovada por spot e data, garantida pelo banco mesmo com dois cliques ao mesmo tempo */
+BookingSchema.index({ spot: 1, date: 1 }, { unique: true, partialFilterExpression: { approved: true } });
 
-module.exports = mongoose.model("Booking", BookingSchema);
+const Booking = mongoose.model("Booking", BookingSchema);
+/* Falha ao criar índice (ex.: aprovações em dobro antigas no banco) não pode passar em silêncio */
+Booking.on("index", (err) => { if (err) console.error("Índice de reservas não criado:", err.message); });
+
+module.exports = Booking;
 /* Fim de Booking.js */
