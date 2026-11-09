@@ -123,6 +123,9 @@ function createApp({ repos, config, notify = () => undefined, today = v.todayBR 
     if (!booking || !booking.spot) return res.status(404).json({ errors: ["Reserva não encontrada."] });
     if (String(booking.spot.user) !== req.userId) return res.status(403).json({ errors: ["Só o dono do spot pode responder a reserva."] });
     if (booking.approved !== null) return res.status(409).json({ errors: ["Esta reserva já foi respondida."] });
+    if (approved && (await repos.bookings.approvedExists(booking.spot._id, booking.date, booking._id))) {
+      return res.status(409).json({ errors: ["Já existe uma reserva aprovada para este spot nesta data."] });
+    }
     const updated = await repos.bookings.setApproved(booking._id, approved);
     notify(String(booking.user._id), "booking_response", publicBooking(updated));
     res.json(publicBooking(updated));

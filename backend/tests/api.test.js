@@ -144,6 +144,22 @@ describe("reservas", () => {
     assert.equal(again.status, 409);
   });
 
+  test("não aprova dois pedidos no mesmo spot e data; rejeitar continua possível", async () => {
+    const outro = await login("outro-dev@gmail.com");
+    const r = await request(app).post(`/spots/${spotId}/bookings`).set("Authorization", `Bearer ${outro}`).send({ date: "10/10/2026" });
+    assert.equal(r.status, 201, JSON.stringify(r.body));
+    const dobro = await request(app).post(`/bookings/${r.body._id}/approvals`).set("Authorization", `Bearer ${owner}`);
+    assert.equal(dobro.status, 409);
+    assert.match(dobro.body.errors[0], /já existe uma reserva aprovada/i);
+    const pend = await request(app).get("/bookings/pending").set("Authorization", `Bearer ${owner}`);
+    assert.ok(pend.body.some((b) => b._id === r.body._id), "o pedido segue pendente");
+    const outraData = await request(app).post(`/spots/${spotId}/bookings`).set("Authorization", `Bearer ${outro}`).send({ date: "11/10/2026" });
+    const ok = await request(app).post(`/bookings/${outraData.body._id}/approvals`).set("Authorization", `Bearer ${owner}`);
+    assert.equal(ok.status, 200);
+    const nao = await request(app).post(`/bookings/${r.body._id}/rejections`).set("Authorization", `Bearer ${owner}`);
+    assert.equal(nao.status, 200);
+  });
+
   test("dono não reserva o próprio spot; spot inexistente responde 404", async () => {
     const own = await request(app).post(`/spots/${spotId}/bookings`).set("Authorization", `Bearer ${owner}`).send({ date: "10/10/2026" });
     assert.equal(own.status, 400);

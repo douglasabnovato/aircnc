@@ -56,6 +56,8 @@ function createMongoRepos() {
       },
       async findById(id) { return populated(id).catch(() => null); },
       async setApproved(id, approved) { await Booking.updateOne({ _id: id }, { approved }); return populated(id); },
+      /* Já existe reserva aprovada neste spot e data (menos a própria)? */
+      async approvedExists(spotId, date, exceptId) { return Boolean(await Booking.exists({ spot: spotId, date, approved: true, _id: { $ne: exceptId } })); },
       async pendingForSpots(spotIds) {
         const list = await Booking.find({ spot: { $in: spotIds }, approved: null }).sort({ createdAt: 1 }).select("_id").lean();
         return Promise.all(list.map((b) => populated(b._id)));
