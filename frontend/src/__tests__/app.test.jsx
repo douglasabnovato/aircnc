@@ -66,6 +66,17 @@ describe("painel", () => {
     expect(screen.queryByText("dev@gmail.com")).toBeNull();
     expect(screen.getByRole("status").textContent).toBe("Reserva aprovada.");
   });
+
+  it("aprovação em dobro mostra o aviso da API e mantém o pedido na lista", async () => {
+    routes["GET /dashboard"] = [200, []];
+    routes["GET /bookings/pending"] = [200, [{ _id: "b2", date: "2026-10-10", user: { email: "outro@gmail.com" }, spot: { company: "Loggi" } }]];
+    routes["POST /bookings/b2/approvals"] = [409, { errors: ["Já existe uma reserva aprovada para este spot nesta data."] }];
+    renderAt("/dashboard");
+    const pedido = (await screen.findByText("outro@gmail.com")).closest("li");
+    await userEvent.click(within(pedido).getByRole("button", { name: "ACEITAR" }));
+    expect((await screen.findByRole("alert")).textContent).toMatch(/Já existe uma reserva aprovada/);
+    expect(screen.getByText("outro@gmail.com")).toBeTruthy();
+  });
 });
 
 describe("cadastro de spot", () => {
