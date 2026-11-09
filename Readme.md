@@ -46,7 +46,7 @@ Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: si
 - `npm run demo` sobe a API sem MongoDB, com dados em memória.
 
 **O que queremos fazer**
-- #88 Decidir a publicação no Render (responsável). O endereço `aircnc-web.onrender.com` respondeu 404 em 09/11/2026, por isso não há link aqui.
+- #88 Publicação no Render: os dois serviços ficaram no ar em 09/11/2026 pelo Blueprint (`render.yaml`). Site: <https://aircnc-web.onrender.com> · API: <https://aircnc-api-45yf.onrender.com/health>. O nome `aircnc-api.onrender.com` pertence a outra conta, por isso a API ganhou o sufixo `-45yf`. Plano gratuito: a API dorme após 15 min e as imagens enviadas no ar somem quando ela reinicia.
 - #89 Proteger a `master` com PR e CI obrigatórios (responsável).
 - #90 Resolver os PRs do Dependabot e os alertas moderados do app.
 - #93 Desconectar o tempo real quando o token expirar.
