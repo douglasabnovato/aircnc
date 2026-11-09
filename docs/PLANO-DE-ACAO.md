@@ -82,3 +82,58 @@ Timebox: 60 min.
 4. `docs/MVP.md` com a régua N1 e o critério 10 em "Parcial"; README com estado e próximos passos.
 
 **Vira issue.** #88 e #89 (responsável); #90 a #94 (agente).
+
+## Ciclo de 07/11/2026
+
+> Executado em 09/11/2026. Branch `feature/2026-11-07` → `developer/sprint-2026-11-12` → `master` (o PR para a `master` fica aberto para o responsável). Nível: Estudo (N1), 10 critérios aplicáveis. Antes: 7 de 10.
+
+### Produto
+
+**Problema e público.** Os mesmos do ciclo anterior: empresas mostram o espaço; programadores pedem um dia no spot.
+
+**Hipótese e meta.** Uma empresa cadastra um spot e aprova uma reserva sem ajuda. Meta deste ciclo: ver o fluxo inteiro rodar no navegador, não só nos testes de unidade.
+
+**O que a pesquisa trouxe.**
+
+| Ideia | O que levamos para o projeto | Fonte |
+|---|---|---|
+| O Playwright sobe vários servidores antes dos testes quando `webServer` é uma lista; com lista, o `baseURL` tem de ser explícito | O teste de ponta a ponta sobe a API de demonstração e o Vite pelo próprio `playwright.config.js` | [Playwright: web server](https://playwright.dev/docs/test-webserver) |
+| Índice único com filtro parcial vale só para os documentos que passam no filtro | Índice `{ spot, date }` único só para `approved: true`: o banco recusa a segunda aprovação mesmo com dois cliques ao mesmo tempo | [MongoDB: índices parciais](https://mongodb.com/docs/manual/core/index-partial), [MongoDB: índices únicos](https://mongodb.com/docs/manual/core/index-unique/) |
+| Em sistemas de reserva, o conflito de horário é checado antes de gravar e protegido contra corrida | Checagem na API (409 com mensagem) mais o índice como última barreira | [OneUptime: reservas com MongoDB](https://oneuptime.com/blog/post/2026-03-31-mongodb-build-booking-reservation-system/view) |
+
+**Backlog priorizado (impacto × esforço).**
+
+| Prioridade | Item | Impacto | Esforço | Destino |
+|---|---|---|---|---|
+| 1 | Tirar o `zod` vulnerável do app sem trocar de SDK | Alto | Baixo | Este ciclo (#90) |
+| 2 | Fluxo principal no navegador, com teste no CI | Alto | Médio | Este ciclo (#92) |
+| 3 | Recusar aprovação em dobro | Médio | Baixo | Este ciclo (#91) |
+| 4 | Migrar para o Expo SDK 58 | Médio | Alto | Issue nova |
+| 5 | Desconectar socket com token vencido | Médio | Baixo | #93 |
+| 6 | Histórico do dev no app | Médio | Médio | #94 |
+| 7 | Publicação e proteção da `master` | Alto | Baixo | Responsável (#88, #89) |
+
+**Fora do escopo.** Pagamento, avaliações, calendário por hora, teste em aparelho.
+
+### Engenharia
+
+**Arquitetura.** Sem mudança de forma: API Express com repositório trocável (memória ou Mongo), Socket.IO com JWT, web em Vite e app em Expo 57. Novo: `backend/src/demo.js` sobe a API com o repositório em memória e imagens numa pasta temporária, sem MongoDB.
+
+**Riscos.**
+- O índice parcial novo não é criado se o banco já tiver duas reservas aprovadas no mesmo spot e data; nesse caso, o Mongoose registra o erro e a checagem da API continua valendo.
+- O teste de ponta a ponta faz o papel do app pelas chamadas da API; a tela do app segue sem teste em aparelho.
+- `playwright install --with-deps` no Ubuntu 26.04 pode ser lento; o job `e2e` tem limite de 25 minutos.
+
+**Qualidade.** API 14 testes, web 8, app 3, ponta a ponta 1 (Playwright 1.65). `npm audit`: API e web sem alertas; app sem alto.
+
+**Definição de pronto.** `npm test` nos três pacotes, `npm run build` no web, `npm run test:e2e` verde, CI verde no PR para a sprint, `docs/MVP.md` e README atualizados.
+
+### Plano de ação
+
+**Este ciclo executa.**
+1. `expo` 57.0.32 no app: o `@expo/cli` novo não usa `zod`, e o alerta alto sai sem o SDK 58 (#90). `vitest` 5.1 no web (alertas moderados do `@vitest/mocker`).
+2. Aprovação em dobro: checagem na API, índice parcial no Mongo e aviso no painel, com testes (#91).
+3. `npm run demo` e teste Playwright do fluxo principal, com job `e2e` no CI (#92).
+4. `docs/MVP.md` com uma tabela só e README com o estado do ciclo.
+
+**Vira issue.** Migração para o Expo SDK 58; o resto segue nas issues abertas (#88, #89, #93, #94).
