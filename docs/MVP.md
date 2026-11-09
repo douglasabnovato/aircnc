@@ -2,9 +2,9 @@
 
 > Revisto em 09/11/2026 (ciclo de 07/11/2026). Nível: **Estudo (N1)**. Os critérios 5 e 7 não se aplicam ao N1 e saem da conta. Testado no Windows, com Node 24, no clone da `feature/2026-11-07`. Não houve teste com pessoas nem em aparelho real.
 
-**Resumo:** 9 de 10 aplicáveis atendidos
+**Resumo:** 10 de 10 aplicáveis atendidos
 
-**Finalizado:** sim — o único critério aplicável que falta (10) depende do responsável e tem a issue #89 com o rótulo `depende-do-responsavel`.
+**Finalizado:** sim — todos os critérios aplicáveis atendidos. Publicado em 09/11/2026: <https://aircnc-web.onrender.com> (API: <https://aircnc-api-45yf.onrender.com/health>).
 
 | # | Critério | Como verificar | Situação | Evidência e data |
 |---|---|---|---|---|
@@ -17,7 +17,7 @@
 | 7 | Desempenho aceitável | LCP de até 2,5 s no celular | Não se aplica (N1). `aircnc-web.onrender.com` respondeu 404 em 09/11/2026. | `curl`, 09/11/2026; #88 |
 | 8 | Acessibilidade básica | axe e teclado | Atende: axe sem violações em 2 telas; foco visível; sem rolagem em 375 px. O teste de ponta a ponta acha os campos pelos rótulos. | Ciclo de 02/11/2026; `fluxo.e2e.js`, 09/11/2026 |
 | 9 | Segurança e conformidade | Riscos decididos | Atende: o `zod` 3 vulnerável (alerta alto GHSA-mrhx-c7xc-m3w5) saiu do app ao subir o `expo` para 57.0.32 (o `@expo/cli` 57.0.33 não usa `zod`), sem trocar de SDK. Restam 4 alertas moderados em ferramentas de build do app (`glob`, `minimatch` e quem depende deles); API e web com 0 alertas no `npm audit`. O alerta do Dependabot fecha quando a mudança chegar à `master`. | `grep -c node_modules/zod mobile/package-lock.json` = 0 e `npm audit` no app: 0 alto, 4 moderados, 8 baixos, 09/11/2026 |
-| 10 | Entrega confiável | CI verde antes de entrar na principal | Parcial: CI roda em PR e push para `master` e `developer/**`, mas a `master` não tem proteção. | API `branches/master/protection` = 404, 09/11/2026; #89 |
+| 10 | Entrega confiável | CI verde antes de entrar na principal | Atende: ruleset `principal-protegida` ativo na `master` (sem bypass): exige PR, os checks `backend`, `frontend`, `mobile` e `e2e`, e bloqueia exclusão e force push. O Render publica a cada commit na `master`. | `gh api repos/douglasabnovato/aircnc/rules/branches/master`, 09/11/2026: deletion, non_fast_forward, pull_request, required_status_checks; #89 |
 | 11 | Testes dos fluxos críticos | Testes automatizados no CI | Atende: 14 na API, 8 no web, 3 no app e 1 de ponta a ponta no navegador. | `npm test` (API 14 pass, web 8 pass, app 3 pass) e `npm run test:e2e` (1 pass), 09/11/2026 |
 | 12 | Documentação honesta | O README ensina a rodar | Atende: comandos conferidos com o `package.json`, inclusive `npm run demo` e `npm run test:e2e`; aviso de estudo; estado e próximos passos. | README, 09/11/2026 |
 
