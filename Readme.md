@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** No ar desde 09/11/2026, no plano gratuito do Render (conferido em 12/11/2026: site e API responderam 200). Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h1 align="center">
     <img alt="Aircnc" title="#Aircnc" src=".github/logo.png" width="250px" />
@@ -27,7 +27,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 
 ## 🌐 Publicação
 
-- Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como executar").
+- No ar desde 09/11/2026: site em <https://aircnc-web.onrender.com> e API em <https://aircnc-api-45yf.onrender.com/health> (conferidos em 12/11/2026, HTTP 200). No plano gratuito, a API dorme após 15 min: o primeiro acesso pode levar cerca de um minuto. Entre 31/10 e 09/11/2026 o projeto ficou fora do ar.
 - Passo a passo do deploy: [docs/DEPLOY.md](docs/DEPLOY.md). O app mobile não é publicado: roda no Expo Go apontando para a API.
 
 App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Android.
@@ -36,7 +36,7 @@ App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Andr
 
 ## Estado e próximos passos (ciclo de 07/11/2026)
 
-Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: sim. O que falta (proteger a `master`, #89) depende do responsável.
+Projeto de estudo (N1): 10 de 10 critérios aplicáveis atendidos. Finalizado: sim. No ar em <https://aircnc-web.onrender.com>; a `master` é protegida (PR e CI obrigatórios).
 
 **O que foi feito**
 - Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
@@ -47,7 +47,6 @@ Projeto de estudo (N1): 9 de 10 critérios aplicáveis atendidos. Finalizado: si
 
 **O que queremos fazer**
 - #88 Publicação no Render: os dois serviços ficaram no ar em 09/11/2026 pelo Blueprint (`render.yaml`). Site: <https://aircnc-web.onrender.com> · API: <https://aircnc-api-45yf.onrender.com/health>. O nome `aircnc-api.onrender.com` pertence a outra conta, por isso a API ganhou o sufixo `-45yf`. Plano gratuito: a API dorme após 15 min e as imagens enviadas no ar somem quando ela reinicia.
-- #89 Proteger a `master` com PR e CI obrigatórios (responsável).
 - #90 Resolver os PRs do Dependabot e os alertas moderados do app.
 - #93 Desconectar o tempo real quando o token expirar.
 - #94 Histórico de reservas do dev no app.
