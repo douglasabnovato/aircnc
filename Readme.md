@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** No ar desde 09/11/2026, no plano gratuito do Render (conferido em 12/11/2026: site e API responderam 200). Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h1 align="center">
     <img alt="Aircnc" title="#Aircnc" src=".github/logo.png" width="250px" />
@@ -27,7 +27,7 @@ Um módulo para a empresa cadastrar seus espaços. E o outro módulo para quem e
 
 ## 🌐 Publicação
 
-- Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como executar").
+- No ar desde 09/11/2026: site em <https://aircnc-web.onrender.com> e API em <https://aircnc-api-45yf.onrender.com/health> (conferidos em 12/11/2026, HTTP 200). No plano gratuito, a API dorme após 15 min: o primeiro acesso pode levar cerca de um minuto. Entre 31/10 e 09/11/2026 o projeto ficou fora do ar.
 - Passo a passo do deploy: [docs/DEPLOY.md](docs/DEPLOY.md). O app mobile não é publicado: roda no Expo Go apontando para a API.
 
 App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Android.
