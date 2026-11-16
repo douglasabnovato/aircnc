@@ -36,7 +36,7 @@ App móvel: Expo 57, React Native 0.86. O CI instala, testa e empacota para Andr
 
 ## Estado e próximos passos (ciclo de 07/11/2026)
 
-Projeto de estudo (N1): 10 de 10 critérios aplicáveis atendidos. Finalizado: sim. No ar em <https://aircnc-web.onrender.com>; a `master` é protegida (PR e CI obrigatórios).
+Projeto de estudo (N1): 10 de 10 critérios aplicáveis atendidos. Finalizado: sim. Em 16/11/2026, o Dependabot tinha 3 alertas no app móvel: 1 corrigido na sprint-19 e 2 aceitos na [ADR-06](docs/adr/0006-aceitar-alertas-de-desenvolvimento-do-dependabot.md), porque ficam nas ferramentas de build e de teste e não entram no app. No ar em <https://aircnc-web.onrender.com>; a `master` é protegida (PR e CI obrigatórios).
 
 **O que foi feito**
 - Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
@@ -47,6 +47,7 @@ Projeto de estudo (N1): 10 de 10 critérios aplicáveis atendidos. Finalizado: s
 
 **O que queremos fazer**
 - #88 Publicação no Render: os dois serviços ficaram no ar em 09/11/2026 pelo Blueprint (`render.yaml`). Site: <https://aircnc-web.onrender.com> · API: <https://aircnc-api-45yf.onrender.com/health>. O nome `aircnc-api.onrender.com` pertence a outra conta, por isso a API ganhou o sufixo `-45yf`. Plano gratuito: a API dorme após 15 min e as imagens enviadas no ar somem quando ela reinicia.
+- #111 Os 2 alertas que restam no app (`minimatch` e `deepmerge`) estão na [ADR-06](docs/adr/0006-aceitar-alertas-de-desenvolvimento-do-dependabot.md); revisar na migração para o Expo 58 (#97).
 - #90 Resolver os PRs do Dependabot e os alertas moderados do app.
 - #93 Desconectar o tempo real quando o token expirar.
 - #94 Histórico de reservas do dev no app.
