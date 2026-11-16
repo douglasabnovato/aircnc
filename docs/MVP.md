@@ -1,10 +1,10 @@
 # MVP — aircnc
 
-> Revisto em 09/11/2026 (ciclo de 07/11/2026); critério 9 revisto em 16/11/2026, com os alertas do Dependabot. Nível: **Estudo (N1)**. Os critérios 5 e 7 não se aplicam ao N1 e saem da conta. Testado no Windows, com Node 24, no clone da `feature/2026-11-07`. Não houve teste com pessoas nem em aparelho real.
+> Revisto em 09/11/2026 (ciclo de 07/11/2026); critério 9 revisto em 16/11/2026 (14h39), com os alertas do Dependabot e a ADR-06. Nível: **Estudo (N1)**. Os critérios 5 e 7 não se aplicam ao N1 e saem da conta. Testado no Windows, com Node 24, no clone da `feature/2026-11-07`. Não houve teste com pessoas nem em aparelho real.
 
-**Resumo:** 9 de 10 aplicáveis atendidos
+**Resumo:** 10 de 10 aplicáveis atendidos
 
-**Finalizado:** não — o critério 9 voltou a Parcial em 16/11/2026: restam 2 alertas do Dependabot no app sem correção dentro do Expo 57 (#111). Publicado em 09/11/2026: <https://aircnc-web.onrender.com> (API: <https://aircnc-api-45yf.onrender.com/health>).
+**Finalizado:** sim — o critério 9 voltou a Atende em 16/11/2026: os 3 alertas do Dependabot no app estão corrigidos na sprint-19 ou cobertos pela [ADR-06](adr/0006-aceitar-alertas-de-desenvolvimento-do-dependabot.md). Publicado em 09/11/2026: <https://aircnc-web.onrender.com> (API: <https://aircnc-api-45yf.onrender.com/health>).
 
 | # | Critério | Como verificar | Situação | Evidência e data |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@
 | 6 | Falhas tratadas | Erro, vazio e carregamento têm resposta clara | Atende: erro da API, estado vazio, "Carregando…", falha de rede e aprovação em dobro (409 com aviso, pedido mantido na lista). | `npm test` em `frontend`: 8 passed, 09/11/2026 |
 | 7 | Desempenho aceitável | LCP de até 2,5 s no celular | Não se aplica (N1). `aircnc-web.onrender.com` respondeu 404 em 09/11/2026. | `curl`, 09/11/2026; #88 |
 | 8 | Acessibilidade básica | axe e teclado | Atende: axe sem violações em 2 telas; foco visível; sem rolagem em 375 px. O teste de ponta a ponta acha os campos pelos rótulos. | Ciclo de 02/11/2026; `fluxo.e2e.js`, 09/11/2026 |
-| 9 | Segurança e conformidade | Riscos decididos | Parcial: 3 alertas abertos do Dependabot, todos em `mobile/package-lock.json`. 1 alerta corrigido na sprint-19 (PR #112: `@expo/fingerprint` 0.20.16, sem o `glob` 13); fecha com o merge na principal; 2 restam (#111): `minimatch` 10.2.6 (médio, só corrigido na 11, que o Expo 57 não aceita) e `deepmerge` 4.3.1 (baixo, do `jest`, sem versão corrigida). API e web sem alertas; o `zod` 3 saiu do app em 09/11/2026. | `gh api "repos/douglasabnovato/aircnc/dependabot/alerts?state=open"`, 16/11/2026 12h01: 3 (#1204 `minimatch`, #1175 `glob`, #1163 `deepmerge`); no app, depois da correção, `npm test` 3 passed e `npx expo export --platform android` ok, 16/11/2026 |
+| 9 | Segurança e conformidade | Riscos decididos | Atende: 3 alertas abertos do Dependabot, todos em `mobile/package-lock.json`, e 0 sem decisão. #1175 `glob`: corrigido na sprint-19 (PR #112); fecha no merge na principal. #1204 `minimatch` 10.2.6 (médio, via `@expo/fingerprint`) e #1163 `deepmerge` 4.3.1 (baixo, via `jest`): na [ADR-06](adr/0006-aceitar-alertas-de-desenvolvimento-do-dependabot.md), porque não entram no bundle do app. API e web sem alertas. | `gh api "repos/douglasabnovato/aircnc/dependabot/alerts?state=open&per_page=100"`, 16/11/2026 14h39: 3 abertos (1 corrigido na sprint-19, 2 na ADR-06, 0 sem decisão). Em `mobile/`: `npx expo export --platform android --source-maps` ok, 856 módulos no bundle e 0 de `minimatch`, `glob`, `deepmerge` ou `@expo/fingerprint`; `npm audit --omit=dev`: 3 moderados, todos na cadeia `expo` → `@expo/fingerprint` → `minimatch` (ADR-06), 16/11/2026 |
 | 10 | Entrega confiável | CI verde antes de entrar na principal | Atende: ruleset `principal-protegida` ativo na `master` (sem bypass): exige PR, os checks `backend`, `frontend`, `mobile` e `e2e`, e bloqueia exclusão e force push. O Render publica a cada commit na `master`. | `gh api repos/douglasabnovato/aircnc/rules/branches/master`, 09/11/2026: deletion, non_fast_forward, pull_request, required_status_checks; #89 |
 | 11 | Testes dos fluxos críticos | Testes automatizados no CI | Atende: 14 na API, 8 no web, 3 no app e 1 de ponta a ponta no navegador. | `npm test` (API 14 pass, web 8 pass, app 3 pass) e `npm run test:e2e` (1 pass), 09/11/2026 |
 | 12 | Documentação honesta | O README ensina a rodar | Atende: comandos conferidos com o `package.json`, inclusive `npm run demo` e `npm run test:e2e`; aviso de estudo; estado e próximos passos. | README, 09/11/2026 |
@@ -35,6 +35,7 @@ Fluxo principal percorrido no navegador com Playwright e job `e2e` no CI (#92); 
 
 ## Histórico
 
+- 16/11/2026 (tarde): a ADR-06 registra os 2 alertas que não chegam à produção (`minimatch` e `deepmerge`), pela ordem do responsável. O critério 9 voltou a Atende; Resumo de 9 para 10 de 10; Finalizado de "não" para "sim".
 - 16/11/2026: com os alertas do Dependabot ligados, o critério 9 caiu de Atende para Parcial (3 alertas no app; 1 corrigido na sprint-19, 2 na #111). Resumo de 10 para 9 de 10; Finalizado de "sim" para "não". O "Atende" de 09/11/2026 já contava 4 alertas moderados abertos sem decisão escrita.
 
 ### Tabela de 06/11/2026 (ciclo de 03/11/2026): 7 de 10 aplicáveis atendidos
