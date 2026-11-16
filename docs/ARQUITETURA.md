@@ -56,3 +56,4 @@ Eventos Socket.IO: `booking_request` (para o dono) e `booking_response` (para o 
 | ADR-03 | Validação de data só no servidor, aceitando DD/MM/AAAA | Uma regra para web e mobile | Validar em cada cliente |
 | ADR-04 | Uploads em disco com nome aleatório | Mantém o original; simples | Cloudinary (grátis) — no Render Free o disco é apagado a cada deploy |
 | ADR-05 | Expo SDK 57 + React Navigation 7 | SDK 43 não roda nos Expo Go atuais | Manter SDK 43 |
+| [ADR-06](adr/0006-aceitar-alertas-de-desenvolvimento-do-dependabot.md) | Aceitar os alertas de desenvolvimento do Dependabot (`minimatch` do `@expo/fingerprint` e `deepmerge` do `jest`) | Não entram no bundle do app nem no site; ordem do responsável de 16/11/2026 | `overrides` para o `minimatch` 11 (versão maior que o Expo 57 não aceita) |
