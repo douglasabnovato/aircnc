@@ -1,16 +1,19 @@
 /* Testes do front: login, painel com pedidos pendentes e validação do cadastro */
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, cleanup, within } from "@testing-library/react";
+import { render, screen, cleanup, within, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import App from "../App";
 import { validateSpot } from "../pages/New";
 
-vi.mock("socket.io-client", () => ({ io: () => ({ on: vi.fn(), disconnect: vi.fn() }) }));
+/* Socket falso: guarda os handlers para o teste disparar eventos do servidor */
+const socketHandlers = {};
+vi.mock("socket.io-client", () => ({ io: () => ({ on: (ev, fn) => { socketHandlers[ev] = fn; }, disconnect: vi.fn() }) }));
 
 let routes;
 beforeEach(() => {
   cleanup();
+  for (const ev of Object.keys(socketHandlers)) delete socketHandlers[ev];
   localStorage.clear();
   routes = {};
   globalThis.fetch = vi.fn(async (url, opts = {}) => {
@@ -76,6 +79,32 @@ describe("painel", () => {
     await userEvent.click(within(pedido).getByRole("button", { name: "ACEITAR" }));
     expect((await screen.findByRole("alert")).textContent).toMatch(/Já existe uma reserva aprovada/);
     expect(screen.getByText("outro@gmail.com")).toBeTruthy();
+  });
+});
+
+describe("tempo real com token vencido", () => {
+  beforeEach(() => {
+    localStorage.setItem("aircnc.session", JSON.stringify({ token: "t", email: "rh@loggi.com" }));
+    routes["GET /dashboard"] = [200, []];
+    routes["GET /bookings/pending"] = [200, []];
+  });
+
+  it("volta ao login quando o servidor avisa que a sessão venceu", async () => {
+    renderAt("/dashboard");
+    await screen.findByText(/ainda não cadastrou spots/);
+    act(() => socketHandlers.session_expired());
+    expect(await screen.findByRole("button", { name: "Entrar" })).toBeTruthy();
+    expect(localStorage.getItem("aircnc.session")).toBeNull();
+  });
+
+  it("volta ao login quando a conexão é recusada por token inválido, mas não por falha de rede", async () => {
+    renderAt("/dashboard");
+    await screen.findByText(/ainda não cadastrou spots/);
+    act(() => socketHandlers.connect_error(new Error("xhr poll error")));
+    expect(screen.getByText(/ainda não cadastrou spots/)).toBeTruthy();
+    act(() => socketHandlers.connect_error(new Error("unauthorized")));
+    expect(await screen.findByRole("button", { name: "Entrar" })).toBeTruthy();
+    expect(localStorage.getItem("aircnc.session")).toBeNull();
   });
 });
 

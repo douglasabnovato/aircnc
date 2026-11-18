@@ -23,6 +23,9 @@ export default function Dashboard() {
       .catch((err) => { if (!alive) return; if (err.status === 401) logout(); else setState({ loading: false, error: err.message, notice: "" }); });
     const socket = io(API_URL, { auth: { token: getSession()?.token } });
     socket.on("booking_request", (b) => setRequests((list) => (list.some((x) => x._id === b._id) ? list : [...list, b])));
+    /* Token vencido: o servidor encerra o tempo real (ou recusa a conexão) e o painel volta ao login */
+    socket.on("session_expired", logout);
+    socket.on("connect_error", (err) => { if (err?.message === "unauthorized") logout(); });
     return () => { alive = false; socket.disconnect(); };
   }, [logout]);
 
