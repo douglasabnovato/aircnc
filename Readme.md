@@ -40,7 +40,7 @@ Projeto de estudo (N1): 10 de 10 critérios aplicáveis atendidos. Finalizado: s
 
 **O que foi feito**
 - Segurança da versão 2.0: senha do banco fora do código, token assinado e upload limitado (#82).
-- API sem alerta alto: `zod` 4 (#85). App sem alerta alto na sprint de 09/11/2026: `expo` 57.0.32, que não traz mais o `zod` 3. O alerta do Dependabot fecha quando a mudança chegar à `master`; a #90 segue para os alertas moderados.
+- API sem alerta alto: `zod` 4 (#85). App sem alerta alto na sprint de 09/11/2026: `expo` 57.0.32, que não traz mais o `zod` 3. O alerta do Dependabot fecha quando a mudança chegar à `master`; a #90 foi fechada em 18/11/2026 (o alerta alto saiu; a migração do SDK ficou na #97).
 - Fluxo principal percorrido no navegador com Playwright: a empresa cadastra o spot, recebe o pedido em tempo real e aprova (#92). Roda no CI, no job `e2e`.
 - A API recusa aprovar duas reservas no mesmo spot e data, e o MongoDB tem um índice para o caso de dois cliques ao mesmo tempo (#91). O índice ganhou teste com um MongoDB em memória na sprint de 19/11/2026 (#100, PR #115).
 - `npm run demo` sobe a API sem MongoDB, com dados em memória.
