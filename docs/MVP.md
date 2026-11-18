@@ -35,7 +35,7 @@ Fluxo principal percorrido no navegador com Playwright e job `e2e` no CI (#92); 
 
 ## Histórico
 
-- 18/11/2026: axe no teste de ponta a ponta (#98), tempo real encerrado quando o token vence (#93) e testes do repositório do MongoDB (#100), no PR #115. Critérios 8 e 11 seguem em Atende, agora com evidência automática; Resumo segue 10 de 10.
+- 18/11/2026: axe no teste de ponta a ponta (#98), tempo real encerrado quando o token vence (#93) e testes do repositório do MongoDB (#100), no PR #115. Critérios 8 e 11 seguem em Atende, agora com evidência automática. Critério 9 segue em Atende, com 1 alerta aberto (de 3 para 1). Resumo segue 10 de 10.
 - 16/11/2026 (tarde): a ADR-06 registra os 2 alertas que não chegam à produção (`minimatch` e `deepmerge`), pela ordem do responsável. O critério 9 voltou a Atende; Resumo de 9 para 10 de 10; Finalizado de "não" para "sim".
 - 16/11/2026: com os alertas do Dependabot ligados, o critério 9 caiu de Atende para Parcial (3 alertas no app; 1 corrigido na sprint-19, 2 na #111). Resumo de 10 para 9 de 10; Finalizado de "sim" para "não". O "Atende" de 09/11/2026 já contava 4 alertas moderados abertos sem decisão escrita.
 

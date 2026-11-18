@@ -13,6 +13,8 @@ permissions:
 jobs:
   backend:
     runs-on: ubuntu-latest
+    env:
+      MONGOMS_DOWNLOAD_DIR: /home/runner/.cache/mongodb-binaries
     defaults:
       run:
         working-directory: backend
