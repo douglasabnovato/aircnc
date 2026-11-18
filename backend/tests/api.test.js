@@ -197,16 +197,18 @@ describe("tempo real", () => {
     c.close();
   });
 
-  test("conexão é encerrada quando o token vence; token vencido não reconecta", { timeout: 8000 }, async () => {
-    const token = jwt.sign({ sub: "curto" }, config.authSecret, { expiresIn: 2 });
+  test("conexão é encerrada quando o token vence (nem antes, nem muito depois); token vencido não reconecta", { timeout: 8000 }, async () => {
+    const token = jwt.sign({ sub: "curto" }, config.authSecret, { expiresIn: 3 });
+    const fim = jwt.decode(token).exp * 1000;
     const c = ioClient(url, { transports: ["websocket"], auth: { token }, reconnection: false });
     await new Promise((r) => c.on("connect", r));
-    const inicio = Date.now();
     const expirou = new Promise((r) => c.on("session_expired", r));
     const motivo = await new Promise((r) => c.on("disconnect", r));
+    const quando = Date.now();
     await expirou;
     assert.equal(motivo, "io server disconnect");
-    assert.ok(Date.now() - inicio < 4000, "desconecta perto do exp, não muito depois");
+    assert.ok(quando >= fim - 100, `não desconecta antes do exp (faltavam ${fim - quando} ms)`);
+    assert.ok(quando < fim + 1500, "desconecta perto do exp, não muito depois");
     c.close();
 
     const deNovo = ioClient(url, { transports: ["websocket"], auth: { token }, reconnection: false });

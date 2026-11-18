@@ -20,7 +20,8 @@ function attachRealtime(httpServer, config) {
   });
   io.on("connection", (socket) => {
     socket.join(`user:${socket.data.userId}`);
-    /* A conexão não vive mais que o token: quando o exp passa, avisa o cliente e desconecta */
+    /* A conexão não vive mais que o token: quando o exp passa, avisa o cliente e desconecta.
+       Todo token da API sai com exp (POST /sessions usa expiresIn = TOKEN_TTL) */
     if (typeof socket.data.exp === "number") {
       let timer;
       /* Validade acima do limite do setTimeout: espera em etapas até o exp */

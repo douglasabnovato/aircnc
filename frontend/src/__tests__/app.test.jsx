@@ -13,6 +13,7 @@ vi.mock("socket.io-client", () => ({ io: () => ({ on: (ev, fn) => { socketHandle
 let routes;
 beforeEach(() => {
   cleanup();
+  for (const ev of Object.keys(socketHandlers)) delete socketHandlers[ev];
   localStorage.clear();
   routes = {};
   globalThis.fetch = vi.fn(async (url, opts = {}) => {
